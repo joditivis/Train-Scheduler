@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Train Schedule</title>
+
+        <!--linking bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--linking google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+
+        <!--linking css file-->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+        <br>
+                
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="text-center">Europe Train Schedule</h1>
+            </div>
+
+            <div class="card card-default">
+                <div class="card-header">Current Train Schedule                  
+                  </div>
+                    <div class="card-body" id="current-trains">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <!-- The scope attribute specifies that this is a header for a column -->
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="train-name">EC Mozart</td>
+                                    <td id="destination">Munich (Hauptbahnhof)</td>
+                                    <td id="frequency">25</td>
+                                    <td id="next-arrival">3:45pm</td>
+                                    <td id="minutes-away">14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+
+            <br>
+
+            <div class="card card-default">
+                <div class="card-header">Add Train
+                  </div>
+                    <div class="card-body">
+
+                        <form role="form">
+                          <div class="form-group row">
+                            <label for="train-name-input">Train Name</label>
+                            <input class="form-control" id="train-name-input" type="name">
+                          </div>
+                          <div class="form-group row">
+                            <label for="destination-input">Destination</label>
+                            <input class="form-control" id="destination-input" type="place">
+                          </div>
+                          <div class="form-group row">
+                            <label for="first-train-time-input">First Train Time (HH:mm - military time)</label>
+                            <input class="form-control" id="first-train-time-input" type="number">
+                          </div>
+                          <div class="form-group row">
+                            <label for="frequency-input">Frequency (min)</label>
+                            <input class="form-control" id="frequency-input" type="number">
+                          </div>
+                          <button class="btn btn-dark" id="add-train" type="submit">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+        <br>
+        <br>
+            
+
+
+
+    <!--linking jquery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!--linking javascript file-->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+    </body>
+</html>
