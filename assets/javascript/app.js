@@ -17,25 +17,24 @@ var firebaseConfig = {
 
   // initial values
   var trainName = "";
-  var trainDestination = "";
-  var firstTrainTime = 0;
-  var nextArrival = 0;
-  var minutesAway = 0;
+  var destination = "";
+  var frequency = 0;
+  var firstTrain = "";
 
   // capture button clicks for adding a train
 $("#add-train").on("click", function(event) {
     event.preventDefault();
 
     trainName = $("#train-name-input").val().trim();
-    trainDestination = $("#destination-input").val().trim();
-    firstTrainTime = $("#first-train-time-input").val().trim();
-    trainFrequency = $("#frequency-input").val().trim();
+    destination = $("#destination-input").val().trim();
+    firstTrain = $("#first-train-time-input").val().trim();
+    frequency = $("#frequency-input").val().trim();
 
     database.ref().set({
         trainName: trainName,
-        trainDestination: trainDestination,
-        firstTrainTime: firstTrainTime,
-        trainFrequency: trainFrequency
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency
     });
 });
 
@@ -45,7 +44,16 @@ database.ref().on("value", function(snapshot) {
     // logging everything that's coming out of snapshot
     console.log(snapshot.val());
     console.log(snapshot.val().trainName);
-    console.log(snapshot.val().trainDestination);
-    console.log(snapshot.val().firstTrainTime);
-    console.log(snapshot.val().trainFrequency);
-})
+    console.log(snapshot.val().destination);
+    console.log(snapshot.val().firstTrain);
+    console.log(snapshot.val().frequency);
+
+    // linking html diplay to reflect what user inputs
+    $("#train-name-display").text(snapshot.val().trainName);
+    $("#destination-display").text(snapshot.val().destination);
+    $("#next-arrival-display").text(snapshot.val().firstTrain);
+    $("#frequency-display").text(snapshot.val().frequency);
+
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+});
