@@ -16,30 +16,50 @@ var firebaseConfig = {
   var database = firebase.database();
 
   // initial values
-  var trainName = "";
-  var destination = "";
-  var frequency = 0;
-  var firstTrain = "";
+//   var trainName = "";
+//   var destination = "";
+//   var frequency = 0;
+//   var firstTrain = "";
 
   // capture button clicks for adding a train
 $("#add-train").on("click", function(event) {
     event.preventDefault();
 
-    trainName = $("#train-name-input").val().trim();
-    destination = $("#destination-input").val().trim();
-    firstTrain = $("#first-train-time-input").val().trim();
-    frequency = $("#frequency-input").val().trim();
+    // grabs users input
+    var trainName = $("#train-name-input").val().trim();
+    var trainDestination = $("#destination-input").val().trim();
+    var firstTrain = $("#first-train-time-input").val().trim();
+    var trainFrequency = $("#frequency-input").val().trim();
 
-    database.ref().set({
-        trainName: trainName,
-        destination: destination,
-        firstTrain: firstTrain,
-        frequency: frequency
-    });
+    // creates local "temporary" object for holding train data
+        var newTrain = {
+        name: trainName,
+        destination: trainDestination,
+        first: firstTrain,
+        frequency: trainFrequency
+    };
+
+    // uploads train data to the database
+    database.ref().push(newTrain);
+
+    // logs all info to console
+    console.log(newTrain.name);
+    console.log(newTrain.destination);
+    console.log(newTrain.first);
+    console.log(newTrain.frequency);
+
+    // clears all of the text-boxes
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-time-input").val("");
+    $("#frequency-input").val("");
 });
 
-// firebase initial loader 
-database.ref().on("value", function(snapshot) {
+// creates firebase event for adding train to the database and a row in the html when a user adds a new train's information
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+
+    
 
     // logging everything that's coming out of snapshot
     console.log(snapshot.val());
