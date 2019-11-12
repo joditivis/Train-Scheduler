@@ -59,14 +59,39 @@ $("#add-train").on("click", function(event) {
 database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 
-    
+    // storing everything as a variable
+    var trainName = childSnapshot.val().name;
+    var trainDestination = childSnapshot.val().destination;
+    var firstTrain = childSnapshot.val().first;
+    var trainFrequency = childSnapshot.val().frequency;
 
     // logging everything that's coming out of snapshot
-    console.log(snapshot.val());
-    console.log(snapshot.val().trainName);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().firstTrain);
-    console.log(snapshot.val().frequency);
+    console.log(trainName);
+    console.log(trainDestination);
+    console.log(firstTrain);
+    console.log(trainFrequency);
+
+    var timeFrequency = 0;
+
+    var firstTime = "";
+
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+
+    var currentTime = moment();
+    console.log("Current Time: " + moment(currentTime).format("hh:mm"));
+
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("Time Difference: " + diffTime);
+
+    var timeRemainder = diffTime % timeFrequency;
+    console.log(timeRemainder);
+
+    var minutesUntilTrain = timeFrequency - timeRemainder;
+    console.log("Minutes Until Train: " + minutesUntilTrain);
+
+    var nextTrain = moment().add(minutesUntilTrain, "minutes");
+    console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"));
 
     // linking html diplay to reflect what user inputs
     $("#train-name-display").text(snapshot.val().trainName);
