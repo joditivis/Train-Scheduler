@@ -34,7 +34,7 @@
                 <div class="card-header">Current Train Schedule                  
                   </div>
                     <div class="card-body" id="current-trains">
-                        <table class="table">
+                        <table class="table table-hover" id="train-table">
                             <thead>
                                 <tr>
                                 <!-- The scope attribute specifies that this is a header for a column -->
@@ -45,7 +45,7 @@
                                     <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="add-row">
                                 <tr>
                                     <td id="train-name-display">EC Mozart</td>
                                     <td id="destination-display">Munich (Hauptbahnhof)</td>
