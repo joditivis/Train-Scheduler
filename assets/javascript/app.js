@@ -59,7 +59,7 @@ database.ref().on("child_added", function (childSnapshot) {
     var minAway;
 
     // change year so first train comes before now
-    var firstTrainTime = moment(childSnapshot.val().firstTrain, "hh:mm").subtract(1, "years");
+    var firstTrainTime = moment(childSnapshot.val().firstTrain, "HH:mm").subtract(1, "years");
 
     // difference between the current time and first train arrival
     var timeDiff = moment().diff(moment(firstTrainTime), "minutes");
@@ -83,11 +83,11 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-    // change html to reflect
-    $("#train-name-display").append(snapshot.val().trainName);
-    $("#destination-display").append(snapshot.val().destination);
-    $("#frequency-display").append(snapshot.val().frequency);
-    $("#next-arrival-display").append(snapshot.val().firstTrain);
-    $("#minutes-away-display").append(snapshot.val().minAway);
-});
+// database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+//     // change html to reflect
+//     $("#train-name-display").append(snapshot.val().trainName);
+//     $("#destination-display").append(snapshot.val().destination);
+//     $("#frequency-display").append(snapshot.val().frequency);
+//     $("#next-arrival-display").append(snapshot.val().firstTrain);
+//     $("#minutes-away-display").append(snapshot.val().minAway);
+// });
