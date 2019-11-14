@@ -1,6 +1,6 @@
 # Train-Scheduler
 
-**Link to page:**
+**Link to page: https://joditivis.github.io/Train-Scheduler/**
 
 # About:
 University of Denver Coding Bootcamp seventh week assignment: This assignment required us to create a Train Scheduler using Firebase database and API.
